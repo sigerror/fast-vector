@@ -9,6 +9,10 @@ A faster analogue of the std::vector for the perfomance-dependent enviroment
 * Modifiable growth factor
 * No exceptions, assertions only
 
+## Requirements
+
+Make sure to use a C++17 language standart compliant compiler.
+
 ## Design reasoning
 
 Most of the time zero initialization is useless, based on that it was removed from the implementation.
