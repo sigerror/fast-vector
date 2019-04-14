@@ -87,6 +87,11 @@ public:
 	void clear() noexcept;
 
 	void push_back(const T& value);
+	void push_back(T&& value);
+
+	template< class... Args >
+	void emplace_back(Args&&... args);
+	
 	void pop_back();
 	void resize(size_type count);
 
@@ -349,6 +354,42 @@ void fast_vector<T>::push_back(const T& value)
 	{
 		new (m_data + m_size) T(value);
 	}
+
+	m_size++;
+}
+
+template <class T>
+void fast_vector<T>::push_back(T&& value)
+{
+	if (m_size == m_capacity)
+	{
+		reserve(m_capacity * fast_vector::grow_factor + 1);
+	}
+
+	if constexpr (std::is_trivial_v<T>)
+	{
+		m_data[m_size] = value;
+	}
+	else
+	{
+		new (m_data + m_size) T(std::move(value));
+	}
+
+	m_size++;
+}
+
+template <class T>
+template< class... Args >
+void fast_vector<T>::emplace_back(Args&&... args)
+{
+	static_assert(!std::is_trivial_v<T>, "Use push_back() instead of emplace_back() with trivial types");
+
+	if (m_size == m_capacity)
+	{
+		reserve(m_capacity * fast_vector::grow_factor + 1);
+	}
+
+	new (m_data + m_size) T(std::forward<Args>(args)...);
 
 	m_size++;
 }
