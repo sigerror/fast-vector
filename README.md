@@ -15,8 +15,8 @@ Make sure to use a C++17 language standart compliant compiler.
 
 ## Google benchmark results
 
-> **Hardware:** Intel® Core™ i7-4720HQ CPU, 8GB DDR3 Dual-channel memory
-> **Enviroment:** Visual Studio 2017, Windows 10 Pro 64-bit
+> **Hardware:** Intel® Core™ i7-4720HQ CPU, 8GB DDR3 Dual-channel memory<br/>
+> **Enviroment:** Visual Studio 2017, Windows 10 Pro 64-bit<br/>
 > **Data size:** 10,000 items
 
 ### Trivial data types
@@ -56,7 +56,7 @@ push_back & pop_back | fast_vector   96396 ns        96257 ns         7467
 
 ## Design reasoning
 
-Most of the time zero initialization is useless, based on that it was removed from the implementation.
-It is safe to reallocate memory which contains trivial data. Trivial type constructors and destructors do nothing, so there are no reasons to call them.
-A growth factor of two is not always suitable for a concrete task, so it was left modifiable.
+Most of the time zero initialization is useless, based on that it was removed from the implementation.<br/>
+It is safe to reallocate memory which contains trivial data. Trivial type constructors and destructors do nothing, so there are no reasons to call them.<br/>
+A growth factor of two is not always suitable for a concrete task, so it was left modifiable.<br/>
 Exceptions are slow and are not used in the perfomance critical enviroment. Assertions, on the other hand, provide no overhead in release builds and are fast enough in debug builds.
