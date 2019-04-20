@@ -25,8 +25,8 @@ Make sure to use a C++17 language standart compliant compiler.
 --------------------------------------------------------------------------
 Benchmark                                Time             CPU   Iterations
 --------------------------------------------------------------------------
-push_back() | std::vector            20126 ns        19950 ns        34462
-push_back() | fast_vector             9392 ns         9417 ns        89600
+push_back | std::vector              20126 ns        19950 ns        34462
+push_back | fast_vector               9392 ns         9417 ns        89600
 --------------------------------------------------------------------------
 reserve & push_back | std::vector    12991 ns        13114 ns        56000
 reserve & push_back | fast_vector     6416 ns         6417 ns       112000
@@ -41,8 +41,8 @@ push_back & pop_back | fast_vector    9253 ns         9242 ns        89600
 --------------------------------------------------------------------------
 Benchmark                                Time             CPU   Iterations
 --------------------------------------------------------------------------
-push_back() | std::vector           137225 ns       138126 ns         3733
-push_back() | fast_vector           121523 ns       122768 ns         5600
+push_back | std::vector             137225 ns       138126 ns         3733
+push_back | fast_vector             121523 ns       122768 ns         5600
 --------------------------------------------------------------------------
 reserve & push_back | std::vector    88303 ns        87887 ns         7467
 reserve & push_back | fast_vector    88671 ns        87887 ns         7467
